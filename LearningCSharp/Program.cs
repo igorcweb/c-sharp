@@ -8,7 +8,126 @@ namespace LearningCSharp
         public string title;
         public string author;
         public int pages;
+
+        public Book(string aTitle, string aAuthor, int aPages)
+        {
+            title = aTitle;
+            author = aAuthor;
+            pages = aPages;
+        }
     }
+
+    class Student
+    {
+        public string name;
+        public string major;
+        public double gpa;
+
+        public Student(string aName, string aMajor, double aGpa)
+        {
+            name = aName;
+            major = aMajor;
+            gpa = aGpa;
+        }
+
+        public bool HasHonors()
+        {
+            if(gpa >= 3.5)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    class Movie
+    {
+        public string title;
+        public string director;
+        private string rating;
+
+        public Movie(string aTitle, string aDirector, string aRating)
+        {
+            title = aTitle;
+            director = aDirector;
+            Rating = aRating;
+        }
+
+        public string Rating
+        {
+            get { return rating; }
+            set {
+                if(value == "G" || value == "PG" || value == "PG-13" || value == "R" || value == "NR") {
+                    rating = value;
+                }
+                else
+                {
+                    rating = "NR";
+                }
+            }
+        }
+    }
+
+    class Song
+    {
+        public string title;
+        public string artist;
+        public int duration;
+        public static int songCount = 0;
+
+        public Song(string aTitle, string aArtist, int aDuration)
+        {
+            title = aTitle;
+            artist = aArtist;
+            duration = aDuration;
+            songCount++;
+        }
+
+        public int getSongCount()
+        {
+            return songCount;
+        }
+    }
+
+    static class UsefulTools
+    {
+        public static void SayHi(string name)
+        {
+            Console.WriteLine("Hello " + name);
+        }
+    }
+
+    class Chef
+    {
+        public void MakeChicken()
+        {
+            Console.WriteLine("The Chef makes chicken");
+        }
+
+        public void MakeSalad()
+        {
+            Console.WriteLine("The Chef makes salad");
+        }
+
+        public virtual void SpecialDish()
+        {
+            Console.WriteLine("The Chef makes bbq ribs");
+        }
+    }
+
+    class ItalianChef : Chef
+    {
+        public void MakePasta()
+        {
+            Console.WriteLine("The Chef makes pasta");
+        }
+
+        public override void SpecialDish()
+        {
+            Console.WriteLine("The Chef makes pizza");
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -205,19 +324,60 @@ namespace LearningCSharp
 
             //Console.ReadLine();
 
-            Book book1 = new Book();
+            //Book book1 = new Book("Harry Potter", "JK Rowling", 400);
 
-            book1.title = "Harry Potter";
-            book1.author = "JK Rowling";
-            book1.pages = 400;
+            ////book1.title = "Harry Potter
+            ////book1.author = "JK Rowling";
+            ////book1.pages = 400;
 
-            Book book2 = new Book();
 
-            book2.title = "Lord of the Rings";
-            book2.author = "Tolkien";
-            book2.pages = 700;
+            //Book book2 = new Book("Lord of the Rings", "Tolkien", 700);
 
-            Console.WriteLine(book1.title);
+            ////book2.title = "Lord of the Rings";
+            ////book2.author = "Tolkien";
+            ////book2.pages = 700;
+
+            //Console.WriteLine(book1.title + ' ' + book2.title);
+
+            //Student student1 = new Student("Jim", "Business", 2.8);
+            //Student student2 = new Student("Pam", "Art", 3.7);
+
+            //Console.WriteLine(student1.HasHonors());
+            //Console.WriteLine(student2.HasHonors());
+
+            //Console.ReadLine();
+
+            //Movie movie1 = new Movie("The Avangers", "Joss Whedon", "PG13");
+            //Movie movie2 = new Movie("Shrek", "Adam Adamson", "PG");
+
+            //movie2.Rating = "Dog";
+
+
+            //Console.WriteLine(movie2.Rating);
+            //Console.ReadLine();
+
+
+
+            //Song holiday = new Song("Holiday", "Green Day", 200);
+            //Console.WriteLine(Song.songCount);
+            //Song kashmir = new Song("Kashmir", "Led Zeppelin", 150);
+            //Console.WriteLine(kashmir.getSongCount());
+
+            //Console.WriteLine(holiday.title);
+            //Console.WriteLine(kashmir.title);
+            //Console.ReadLine();
+
+            //UsefulTools.SayHi("Igor");
+
+            //Console.ReadLine();
+
+            Chef chef = new Chef();
+            chef.MakeChicken();
+
+            ItalianChef italianChef = new ItalianChef();
+            italianChef.MakeChicken();
+            italianChef.SpecialDish();
+
 
             Console.ReadLine();
         }
